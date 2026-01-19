@@ -11,8 +11,10 @@ public class PaymentService {
     @Autowired
     private PaymentGatewayChooserStrategy strategy;
 
-    public String getPaymentLink(Long amount,String orderId,String phoneNumber,String name, String email) {
+    public String getPaymentLink(Long amount,String orderId,String phoneNumber,
+                                 String name, String email) {
         IPaymentGateway paymentGateway = strategy.getBestPaymentGateway();
-        return paymentGateway.createPaymentLink(amount, orderId, phoneNumber, name, email);
+        return paymentGateway.createPaymentLink(amount, orderId, phoneNumber,
+                name, email);
     }
 }
